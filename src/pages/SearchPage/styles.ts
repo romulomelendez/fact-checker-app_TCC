@@ -7,7 +7,6 @@ export const Container = styled.div `
     place-items: center;
     row-gap: 10px;
     padding: 10px;
-    background-color: aqua;
 
 `
 export const SearchInput = styled.input `
@@ -17,12 +16,23 @@ export const SearchInput = styled.input `
     color: #f7f7f7;
     max-width: 500px;
     width: 100%;
+    outline: none;
 
 `
 export const Check = styled.button `
 
+    font-size: 12pt;
+    font-weight: 700;
     padding: 10px;
-    max-width: 500px;
-    width: 100%;  
+    max-width: 300px;
+    border-radius: 50px;
+    border: none;
+    width: 100%;
+    color: black;
+    cursor: pointer;
+
+    :hover {
+        background-color: #cecece;
+    }
 
 `
