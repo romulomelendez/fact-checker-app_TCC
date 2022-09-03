@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { Logo } from '../../components/Logo'
+
 import { Container, SearchInput, Check } from './styles'
 
 export const SearchPage: React.FC = () => {
@@ -22,6 +24,7 @@ export const SearchPage: React.FC = () => {
     return (
 
         <Container>
+            <Logo />
             <SearchInput type="text" placeholder="Search" value={ search } onChange={ e => setSearch(e.target.value) } />
             <Check onClick={ handleFactNews }>CHECK</Check>
         </Container>

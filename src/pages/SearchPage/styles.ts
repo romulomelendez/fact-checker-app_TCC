@@ -3,17 +3,21 @@ import styled from 'styled-components'
 export const Container = styled.div `
 
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(max-content, max-content));
+    grid-template-rows: repeat(2, max-content);
     place-items: center;
-    row-gap: 10px;
+    row-gap: 40px;
     padding: 10px;
+    width: 500px;
+    margin-top: -50px;
 
 `
 export const SearchInput = styled.input `
 
-    padding: 10px;
-    font-size: 12pt;
-    color: #f7f7f7;
+    padding: 15px;
+    font-size: 15pt;
+    color: gray;
+    border-radius: 50px;
+    border: none;
     max-width: 500px;
     width: 100%;
     outline: none;
@@ -27,12 +31,15 @@ export const Check = styled.button `
     max-width: 300px;
     border-radius: 50px;
     border: none;
+    height: 40px;
     width: 100%;
-    color: black;
+    color: #f7f7f7;
+    background-color: #3498DB;
     cursor: pointer;
+    transition: background-color 0.5s;
 
     :hover {
-        background-color: #cecece;
+        background-color: #21618C;
     }
 
 `
