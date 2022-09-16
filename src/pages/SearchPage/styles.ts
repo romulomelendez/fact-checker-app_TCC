@@ -7,7 +7,7 @@ export const Container = styled.div `
     place-items: center;
     row-gap: 40px;
     padding: 10px;
-    width: 500px;
+    max-width: 100vw;
     margin-top: -50px;
 
 `
@@ -17,7 +17,7 @@ export const SearchInput = styled.input `
     font-size: 15pt;
     color: gray;
     border-radius: 50px;
-    border: none;
+    border: 2px solid #3498DB;
     max-width: 500px;
     width: 100%;
     outline: none;
