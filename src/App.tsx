@@ -1,13 +1,20 @@
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+  } from "react-router-dom"
+
 import { SearchPage } from './pages/SearchPage'
+// import { HotNews } from './pages/HotNews'
 
-import { NavBar } from './components/NavBar'
-
-import { Container, GlobalStyle } from './globalStyles'
+import { GlobalStyle } from './globalStyles'
 
 export const App: React.FC = () =>
 
-    <Container>
+    <BrowserRouter>
         <GlobalStyle />
-        <NavBar />
-        <SearchPage />
-    </Container>
+        <Routes>
+            <Route path="/" element={ <SearchPage /> } />
+            {/* <Route path="/hotnews" element={ <HotNews /> } /> */}
+        </Routes>
+    </BrowserRouter>

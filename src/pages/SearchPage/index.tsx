@@ -1,34 +1,13 @@
-import { useState } from 'react'
+import { NavBar } from '../../components/NavBar'
+import { Searcher } from '../../components/Searcher'
 
-import { Logo } from '../../components/Logo'
+import { Container } from './styles'
 
-import { Container, SearchInput, Check } from './styles'
+export const SearchPage: React.FC = () => (
 
-export const SearchPage: React.FC = () => {
+    <Container>
+        <NavBar />
+        <Searcher />
+    </Container>
 
-    const [search, setSearch] = useState('')
-
-    const handleFactNews = () => {
-
-        try {
-            fetch(import.meta.env.VITE_BASE_API_URL + `${search}` + '&key=' + import.meta.env.VITE_API_KEY)
-             .then(response => response.json())
-             .then(data => console.log(data))
-        }
-        catch (err) {
-            console.error(err)
-        }
-
-    }
-
-    return (
-
-        <Container>
-            <Logo />
-            <SearchInput type="text" placeholder="Search" value={ search } onChange={ e => setSearch(e.target.value) } />
-            <Check onClick={ handleFactNews }>CHECK</Check>
-        </Container>
-
-    )
-
-}
+)
