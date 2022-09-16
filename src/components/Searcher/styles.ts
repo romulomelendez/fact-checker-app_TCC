@@ -20,7 +20,7 @@ export const Check = styled.button `
     max-width: 300px;
     border-radius: 50px;
     border: none;
-    height: 40px;
+    height: 50px;
     width: 100%;
     color: #f7f7f7;
     background-color: #3498DB;
