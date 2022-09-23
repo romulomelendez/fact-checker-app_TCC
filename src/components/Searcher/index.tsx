@@ -6,7 +6,10 @@ import { SearchInput, Check } from './styles'
 
 export const Searcher: React.FC = () => {
 
+    
+
     const [search, setSearch] = useState('')
+    const [searchDatas, setSearchDatas] = useState([{}])
 
     const handleFactNews = () => {
 
