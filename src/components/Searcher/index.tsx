@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { Logo } from '../../components/Logo'
 
@@ -6,10 +6,7 @@ import { SearchInput, Check } from './styles'
 
 export const Searcher: React.FC = () => {
 
-    
-
     const [search, setSearch] = useState('')
-    const [searchDatas, setSearchDatas] = useState([{}])
 
     const handleFactNews = () => {
 
@@ -27,7 +24,17 @@ export const Searcher: React.FC = () => {
     return (
         <>
             <Logo />
-            <SearchInput type="text" placeholder="Search" value={ search } onChange={ e => setSearch(e.target.value) } />
+            <SearchInput
+                type="text"
+                placeholder="Search"
+                value={ search }
+                onChange={ e => setSearch(e.target.value) }
+                onKeyUp={ e => {
+                    e.key === 'Enter'
+                    && search.length !== 0
+                    && handleFactNews()
+                }
+            } />
             <Check onClick={ handleFactNews }>CHECK</Check>
         </>
     )
