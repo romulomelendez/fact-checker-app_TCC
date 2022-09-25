@@ -6,6 +6,7 @@ import {
 
 import { SearchPage } from './pages/SearchPage'
 import { HotNews } from './pages/HotNews'
+import { Results } from './pages/Results'
 
 import { GlobalStyle } from './globalStyles'
 
@@ -16,6 +17,6 @@ export const App: React.FC = () =>
         <Routes>
             <Route path="/" element={ <SearchPage /> } />
             <Route path="/hotnews" element={ <HotNews /> } />
-            <Route path="/results/:seacrh"  />
+            <Route path="/results/:seacrh" element={ <Results /> } />
         </Routes>
     </BrowserRouter>
