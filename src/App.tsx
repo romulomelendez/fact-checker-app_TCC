@@ -17,6 +17,6 @@ export const App: React.FC = () =>
         <Routes>
             <Route path="/" element={ <SearchPage /> } />
             <Route path="/hotnews" element={ <HotNews /> } />
-            <Route path="/results/:seacrh" element={ <Results /> } />
+            <Route path="/results/:search" element={ <Results /> } />
         </Routes>
     </BrowserRouter>

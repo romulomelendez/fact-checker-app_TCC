@@ -6,11 +6,11 @@ export const Results: React.FC = () => {
 
     return (
         <>
-
+            <h1>RESULT PAGE</h1>
             {
-
+                console.log(search)
             }
-            
+
         </>
     )
 
