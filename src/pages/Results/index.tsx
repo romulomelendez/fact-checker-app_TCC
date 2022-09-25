@@ -1,12 +1,16 @@
 import { useParams } from 'react-router-dom'
 
+import { SearchInput } from '../../components/SearchInput'
+
+import {} from './styles'
+
 export const Results: React.FC = () => {
 
     let { search } = useParams()
 
     return (
         <>
-            <h1>RESULT PAGE</h1>
+            <SearchInput />
             {
                 console.log(search)
             }
