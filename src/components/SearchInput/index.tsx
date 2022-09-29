@@ -6,7 +6,7 @@ import { Input } from './styles'
 
 export const SearchInput: React.FC = () => {
 
-    const { search, setSearch, handleFactNews } = useContext(SearchContext)
+    const { search, setSearch, fetchNews } = useContext(SearchContext)
 
     return (
 
@@ -14,10 +14,11 @@ export const SearchInput: React.FC = () => {
             onKeyUp={ e => {
                     e.key === 'Enter'
                     && search.length !== 0
-                    && handleFactNews()
+                    && fetchNews()
                 }
             }
-        />
+        />   
+  
     )
     
 }
