@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useState } from "react"
 
+import { useNavigate } from 'react-router-dom'
+
 interface SearchContextProps {
     children: ReactNode
 }
@@ -48,6 +50,7 @@ export const SearchProvider = ({ children }: SearchContextProps) => {
 
     const [search, setSearch] = useState('')
     const [news, setNews] = useState<NewsProps[]>([])
+    let navigate = useNavigate()
 
     const handleNews = ( rawDatas: NewsProps[] ) => {
 
@@ -108,6 +111,7 @@ export const SearchProvider = ({ children }: SearchContextProps) => {
                 rawDataNews = data.claims
                 setSearch('')
             }).then( () => handleNews(rawDataNews) )
+             .then( () => navigate(`/results/${search.replace(' ', '+')}`))
 
         }
         catch (err) {

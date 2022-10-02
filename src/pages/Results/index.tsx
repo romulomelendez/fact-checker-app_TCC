@@ -1,21 +1,29 @@
-import { useParams } from 'react-router-dom'
+import { useContext } from 'react'
+
+import { SearchContext } from '../../contexts/SearchContext'
 
 import { SearchInput } from '../../components/SearchInput'
 
-import {} from './styles'
+import { Container, Check, SearchContainer, NewsContainer } from './styles'
 
 export const Results: React.FC = () => {
 
-    let { search } = useParams()
+    const { fetchNews } = useContext(SearchContext)   
 
     return (
-        <>
-            <SearchInput />
-            {
-                console.log(search)
-            }
+        <Container>
+            <SearchContainer>
 
-        </>
+                <SearchInput />
+                <Check onClick={ fetchNews }>CHECK</Check>
+
+            </SearchContainer>
+            <NewsContainer>
+
+                
+
+            </NewsContainer>
+        </Container>
     )
 
 }
