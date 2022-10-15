@@ -9,13 +9,13 @@ import { Check } from './styles'
 
 export const Searcher: React.FC = () => {
 
-    const { fetchNews } = useContext(SearchContext)
+    const { fetchNewsOnBackend } = useContext(SearchContext)
 
     return (
         <>
             <Logo />
             <SearchInput />
-            <Check onClick={ fetchNews }>CHECK</Check>
+            <Check onClick={ fetchNewsOnBackend }>CHECK</Check>
         </>
     )
 

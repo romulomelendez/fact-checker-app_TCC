@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -10,8 +10,8 @@ type NewsProps = {
 
     "originalNews": {
         "originalTitle": string,
-        "originalClaimant": string,
-        "originalClaimDate": string
+        "originalClaimant": string | undefined,
+        "originalClaimDate": string | undefined
     },
     "newsReview": [
         {
@@ -28,11 +28,11 @@ type NewsProps = {
 
 type SearchContextType = {
     search: string,
-    news: Array<NewsProps> | undefined,
+    news: Array<NewsProps>,
 
     setSearch: (search: string) => void,
-    setNews: (news: Array<NewsProps>) => void,
-    fetchNews: () => void
+    setNews: (news: NewsProps[]) => void,
+    fetchNewsOnBackend: () => void
 }
 
 const SearchContextInitialValues = {
@@ -41,7 +41,7 @@ const SearchContextInitialValues = {
 
     setSearch: () => {},
     setNews: () => {},
-    fetchNews: () => {}
+    fetchNewsOnBackend: () => {}
 }
 
 export const SearchContext = createContext<SearchContextType>(SearchContextInitialValues)
@@ -52,77 +52,29 @@ export const SearchProvider = ({ children }: SearchContextProps) => {
     const [news, setNews] = useState<NewsProps[]>([])
     let navigate = useNavigate()
 
-    const handleNews = ( rawDatas: NewsProps[] ) => {
+    const fetchNewsOnBackend = async () => {
 
         try {
+
+            // Making request to backend to get news and set them in the variable
+            const responseNews: NewsProps[] = await (await fetch(import.meta.env.VITE_BASE_BACKEND_URL + search)).json()
+            setNews(responseNews)
             
-            let arrayNewsObj = [] as NewsProps[]
-            rawDatas.map((item: any) => {
-
-                let originalNews = {
-    
-                    "originalTitle": item.text,
-                    "originalClaimant": item.claimant,
-                    "originalClaimDate": item.claimDate   
-
-                }
-
-                let newsReview = [] as object[]
-                item.claimReview.map((review: any) => {
-
-                    newsReview = [{
-
-                            "publisherName": review.publisher.name,
-                            "publisherSite": review.publisher.site,
-                            "reviewDate": review.reviewDate,
-                            "textualRating": review.textualRating,
-                            "title": review.title,
-                            "urlNews": review.url,
-                            "languageCode": review.languageCode
-                        }
-                    ]   
-
-                })
-                
-                // @ts-ignore:next-line
-                originalNews.newsReview = newsReview
-                // @ts-ignore:next-line
-                arrayNewsObj.push(originalNews)
-                
-            })
+            // Redirect to result page
+            navigate(`/results/${search.replace(' ', '+')}`)
             
-            setNews(arrayNewsObj)
+            //Clean input
+            setSearch('')
 
-        } catch (err) {
-            console.error(err)
+        } catch (err: any) {
+            console.error(err.message)
         }
         
     }
 
-    const fetchNews = () => {
-
-        try {
-
-            let rawDataNews = [] as Array<NewsProps>
-
-            fetch(import.meta.env.VITE_BASE_API_URL + `${search}` + '&key=' + import.meta.env.VITE_API_KEY)
-             .then(response => response.json())
-             .then(data => {
-                rawDataNews = data.claims
-                setSearch('')
-            }).then( () => handleNews(rawDataNews) )
-             .then( () => navigate(`/results/${search.replace(' ', '+')}`))
-
-        }
-        catch (err) {
-            console.error(err)
-        }
-
-    }
-
     return (
 
-        <SearchContext.Provider value={{ search, setSearch, fetchNews, news, setNews }}>
+        <SearchContext.Provider value={{ search, setSearch, fetchNewsOnBackend, news, setNews }}>
             { children }
         </SearchContext.Provider>
 
