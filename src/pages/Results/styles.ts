@@ -42,4 +42,30 @@ export const SearchContainer = styled.div `
 
 `
 
-export const NewsContainer = styled.div ``
+export const NewsContainer = styled.div `
+
+    background-color: lightyellow;
+
+`
+
+export const Card = styled.div `
+
+    background-color: aqua;
+
+
+`
+
+export const CardContainer = styled.div `
+
+    background-color: green;
+    margin-bottom: 20px;
+
+`
+
+export const CardHeader = styled.div ``
+
+export const CardContent = styled.div ``
+
+export const ReviewHeader = styled.div ``
+
+export const ReviewContent = styled.div ``
