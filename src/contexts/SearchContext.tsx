@@ -6,7 +6,7 @@ interface SearchContextProps {
     children: ReactNode
 }
 
-type NewsProps = {
+export type NewsProps = {
 
     "originalNews": {
         "originalTitle": string,
