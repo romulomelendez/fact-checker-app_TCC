@@ -4,7 +4,7 @@ import { SearchContext } from '../../contexts/SearchContext'
 
 import { SearchInput } from '../../components/SearchInput'
 
-import { Container, Check, SearchContainer, NewsContainer, CardContainer, Card, CardHeader, CardContent, ReviewHeader, ReviewContent } from './styles'
+import { Container, Check, SearchContainer, NewsContainer, Card, CardTitle, CardHeader, CardContent } from './styles'
 
 export const Results: React.FC = () => {
 
@@ -26,27 +26,12 @@ export const Results: React.FC = () => {
                         
                             <Card key={index}>
                                 <CardHeader>
-                                    <h3>Original Title: { report.originalNews.originalTitle }</h3>
-                                    <h4>Rumor Origin: { report.originalNews.originalClaimant }</h4>
-                                    <h5>Date: { report.originalNews.originalClaimDate }</h5>
+                                    <CardTitle>{ report.originalNews.originalTitle }</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    {
-                                        report.newsReview.map( review => 
-                                            <CardContainer>
-                                                <ReviewHeader>
-                                                    <h3>Publisher Name: { review.publisherName }</h3>
-                                                    <h4>Publisher Site: { review.publisherSite }</h4>
-                                                    <h5>Review Date: { review.reviewDate }</h5>
-                                                </ReviewHeader> 
-                                                <ReviewContent>
-                                                    <h4>Textual Rating: { review.textualRating }</h4>
-                                                    <h5>Review Site: { review.urlNews }</h5>
-                                                    <h6>Language Code: { review.languageCode }</h6>
-                                                </ReviewContent>
-                                            </CardContainer>
-                                        )
-                                    }
+                                    <h5>Date: { report.originalNews.originalClaimDate }</h5>
+                                    <h5>Rating: { report.newsReview[0].textualRating }</h5>
+                                    <h5>Lang: { report.newsReview[0].languageCode }</h5>
                                 </CardContent>                        
                             </Card>
 
