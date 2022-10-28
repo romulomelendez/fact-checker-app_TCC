@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+type CssProps = {
+    variant: string
+}
+
 export const CardContainer = styled.div `
 
     display: grid;
@@ -8,12 +12,27 @@ export const CardContainer = styled.div `
     height: max-content;
     max-width: 400px;
     padding: 10px;
-    background-color: #3498DB;
-    color: #21618C;
-    border: 3px solid #21618C;
     border-radius: 10px;
     cursor: pointer;
 
+    ${({ variant }: CssProps) => variant === 'Verdadeiro'
+        ? `
+            background-color: #3498DB;
+            border: 3px solid #21618C;
+            color: #21618C; 
+        `
+        :
+            variant === 'Verdadeiro, mas...' 
+            ? `
+                background-color: #d67427;
+                border: 3px solid #78451e;
+                color: #78451e;   
+            ` : `
+                background-color: #c94b42;
+                border: 3px solid #6e2924;
+                color: #6e2924; 
+            `
+    }
 `
 
 export const CardHeader = styled.div ` padding: 10px; `

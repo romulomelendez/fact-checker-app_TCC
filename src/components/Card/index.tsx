@@ -7,9 +7,9 @@ type CardProps = {
 }
 
 export const Card = ({ report }: CardProps) => {
-    
+    console.log(report.newsReview[0].textualRating)
     return (
-        <CardContainer>
+        <CardContainer variant={report.newsReview[0].textualRating}>
             <CardHeader>
                 <CardTitle>{ report.originalNews.originalTitle }</CardTitle>
             </CardHeader>
