@@ -3,7 +3,7 @@ version: '3'
 services:
 
   backend:
-    image: romulodocker/fact-checker-app-backend:1.0.0
+    image: romulodocker/fact-checker-app-backend:1.0.1
     container_name: fca-api
     restart: on-failure
     ports:
