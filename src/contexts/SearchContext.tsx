@@ -57,7 +57,7 @@ export const SearchProvider = ({ children }: SearchContextProps) => {
         try {
 
             // Making request to backend to get news and set them in the variable
-            const responseNews: NewsProps[] = await (await fetch(import.meta.env.VITE_BASE_BACKEND_URL + search)).json()
+            const responseNews: NewsProps[] = await (await fetch(import.meta.env.VITE_BASE_BACKEND_URL + '/search/' + search)).json()
             setNews(responseNews)
             
             // Redirect to result page
