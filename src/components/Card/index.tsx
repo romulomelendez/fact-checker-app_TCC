@@ -6,9 +6,8 @@ type CardProps = {
     report: NewsProps,
 }
 
-export const Card = ({ report }: CardProps) => {
-    console.log(report.newsReview[0].textualRating)
-    return (
+export const Card = ({ report }: CardProps) => 
+(
         <CardContainer variant={report.newsReview[0].textualRating}>
             <CardHeader>
                 <CardTitle>{ report.originalNews.originalTitle }</CardTitle>
@@ -20,4 +19,3 @@ export const Card = ({ report }: CardProps) => {
             </CardContent>                        
         </CardContainer>
     )
-}
