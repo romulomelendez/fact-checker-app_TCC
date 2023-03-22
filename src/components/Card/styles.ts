@@ -35,7 +35,20 @@ export const CardContainer = styled.div `
     }
 `
 
-export const CardHeader = styled.div ` padding: 10px; `
+export const CardHeader = styled.div `
+    
+    padding: 10px;
+
+    a {
+
+        text-decoration: none;
+        :hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+
+`
 
 export const CardTitle = styled.h2 ` color: #fff; `
 

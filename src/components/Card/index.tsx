@@ -10,7 +10,9 @@ export const Card = ({ report }: CardProps) =>
 (
         <CardContainer variant={report.newsReview[0].textualRating}>
             <CardHeader>
-                <CardTitle>{ report.originalNews.originalTitle }</CardTitle>
+                <a href={ report.newsReview[0].urlNews } target="_blank">
+                    <CardTitle>{ report.originalNews.originalTitle }</CardTitle>
+                </a>
             </CardHeader>
             <CardContent>
                 <h5>Date: { report.originalNews.originalClaimDate }</h5>
