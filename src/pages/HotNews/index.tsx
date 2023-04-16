@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react'
 
 import { NavBar } from '../../components/NavBar'
+import { HotCard } from '../../components/HotCard'
 
-import { Container } from './styles'
+import { Container, HNSection } from './styles'
+
+export type ArticleProps = {
+    author: string,
+    title: string,
+    topNewsUrl: string,
+    publishedAt: string
+}
 
 export const HotNews: React.FC = () => {
 
-    const [articles, setArticles] = useState([{}]) 
+
+    const [articles, setArticles] = useState<ArticleProps[]>([]) 
 
     useEffect( () => {
 
@@ -24,16 +33,11 @@ export const HotNews: React.FC = () => {
         <Container>
             <NavBar />
             <h1>Hot News</h1>
-            {
-                articles?.map((article: any, index: number) => (
-                    <div key={index}>
-                        <h2>{ article.title }</h2>
-                        <h5>{ article.author }</h5>
-                        <a href={ article.topNewsUrl}>Click to read</a>
-                        <p>{ article.publishedAt }</p>
-                    </div>
-                ))
-            }
+            <HNSection>
+                {
+                    articles?.map((article, index: number) => <HotCard key={index} article={article} />)
+                }
+            </HNSection>
         </Container>
     
     )
