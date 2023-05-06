@@ -3,11 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div `
 
     display: grid;
-    grid-template-rows: 150px max-content;
-    padding: 20px;
-    place-items: center;
-    height: 250px;
+    grid-template-rows: repeat(3, max-content);
     background-color: #d7dbd8;
+    row-gap: 10px;
 
 `
 
@@ -35,22 +33,23 @@ export const SearchContainer = styled.div `
 
     display: flex;
     flex-direction: row;
-    width: 100%;
+    max-width: 100vw;
+    width: 100%; 
     gap: 10px;
     padding: 10px;
     justify-content: center;
     align-items: center;
-
 `
 
 export const NewsContainer = styled.div `
 
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 450px));
     width: 100%;
+    height: auto;
     column-gap: 20px;
-    row-gap: 20px;
-    justify-content: center;
-    align-items: center;
+    row-gap: 40px;
+    justify-content: center;     
+    justify-items: center;     
     padding: 20px;
 `
